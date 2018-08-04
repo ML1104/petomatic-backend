@@ -14,27 +14,29 @@ RESPONSE:
     {
         "id" : INT,
         "username" : String,
-        "password" " : String
+        "displayName" : String,
+        "email" " : String
     },
     {
         "id" : INT,
         "username" : String,
-        "password" " : String
+        "displayName" : String,
+        "email" " : String
     }
 ]
 EXCEPTIONS:
 500:
 {
-    code: 12321321,
+    code: 1533375500,
     message: "Cannot connect to database"
 }
 400:
 {
-    code: 12309213,
+    code: 1533375516,
     message: "Parameter marko is not allowed"
 }
 
-[GET] /__user__
+[GET] /__users/id__
 Displays a single user
 REQUEST:
 user/id
@@ -42,7 +44,8 @@ RESPONSE:
 {
     "id" : INT,
     "username" : String,
-    "password" " : String
+    "displayName" : String,
+    "email" : String
 }
 EXCEPTIONS:
 500:
@@ -54,6 +57,11 @@ EXCEPTIONS:
 {
     code: 12309213,
     message: "User not found"
+}
+404:
+{
+    code: 12309213,
+    message: "something not found"
 }
 
 [POST] /__users__
@@ -119,7 +127,6 @@ sortDir asc|desc
 skip int = 0
 limit int = 25
 name - filter by name string
-pet name - filter by pet name string
 RESPONSE:
 [
     {
@@ -128,7 +135,8 @@ RESPONSE:
         "picture" : String,
         "phone" : INT,
         "email" : String,
-        "gender" : String
+        "gender" : String,
+        "petName" : String
     },
     {
         "id" : INT,
@@ -136,7 +144,8 @@ RESPONSE:
         "picture" : String,
         "phone" : INT,
         "email" : String,
-        "gender" : String
+        "gender" : String,
+        "petName" : String
     }
 ]
 EXCEPTIONS:
@@ -151,7 +160,7 @@ EXCEPTIONS:
     message: "Parameter example is not allowed"
 }
 
-[GET] /__client__
+[GET] /__clients/id__
 Shows a specific client by ID
 REQUEST:
 client/ID
@@ -162,7 +171,11 @@ RESPONSE:
         "picture" : String,
         "phone" : INT,
         "email" : String,
-        "gender" : String
+        "gender" : String,
+        "pets" : [
+            "petId" : INT,
+            "petName" : String,
+        ]
     }
 EXCEPTIONS:
 500:
@@ -193,7 +206,7 @@ RESPONSE:
         "picture" : String,
         "phone" : INT,
         "email" : String,
-        "gender" : String
+        "gender" : String,
     },
 EXCEPTIONS:
 500:
@@ -258,7 +271,10 @@ RESPONSE:
         "condition" : String,
         "age" : INT,
         "gender" : String,
-        "customer_id" : INT
+        "customer" : {
+            "customer_id" : INT,
+            "customerName" : String
+        }
     },
     {
         "id" : INT,
@@ -267,7 +283,10 @@ RESPONSE:
         "condition" : String,
         "age" : INT,
         "gender" : String,
-        "customer_id" : INT
+        "customer" : {
+            "customer_id" : INT,
+            "customerName" : String
+        }
     }
 ]
 EXCEPTIONS:
@@ -282,7 +301,7 @@ EXCEPTIONS:
     message: "Parameter example is not allowed"
 }
 
-[GET] /__pet__
+[GET] /__pets/id__
 Shows a specific pet
 REQUEST:
 pets/ID
@@ -294,7 +313,10 @@ RESPONSE:
         "condition" : String,
         "age" : INT,
         "gender" : String,
-        "customer_id" : INT
+        "customer" : {
+                    "customer_id" : INT,
+                    "customerName" : String
+                }
     }
 EXCEPTIONS:
 500:
