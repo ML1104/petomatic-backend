@@ -9,29 +9,64 @@ class PagesController
     public function home()
     {
         $visits = App::get('database')->getAll("visits");
-        json_encode($visits);
+        echo json_encode($visits);
     }
 
-    public function contact()
+    public function listPets()
     {
-        return view('contact');
+        $pets = App::get('database')->getAll("pets");
+        echo json_encode($pets);
     }
 
-    public function aboutUs()
+    public function viewPet($params)
     {
-        return view('about');
+        $pet = App::get('database')->getOne("pets", $params);
+        echo json_encode($pet);
     }
 
-    public function storeTask()
+    public function addPet()
     {
-        App::get('database')->addNew("tasks", $_POST);
-        return redirect('/');
+        $pets = App::get('database')->getAll("pets");
+        echo json_encode($pets);
     }
 
-    public function products()
+    public function listClients()
     {
-        $products = App::get('database')->getAll("products");
+        $clients = App::get('database')->getAll("customers");
+        echo json_encode($clients);
+    }
 
-        return view('products', compact('products'));
+    public function viewClient($params)
+    {
+        $client = App::get('database')->getOne("customers", $params);
+        echo json_encode($client);
+    }
+
+    public function addClient()
+    {
+        $clients = App::get('database')->getAll("customers");
+        echo json_encode($clients);
+    }
+
+
+    public function listUsers()
+    {
+        $users = App::get('database')->getAll("users");
+        echo json_encode($users);
+    }
+
+    public function viewUser($params)
+    {
+        $user = App::get('database')->getOne("users", $params);
+        echo json_encode($user);
+    }
+
+    public function addUser()
+    {
+        $userDetails = $_POST;
+        $userDetails['password'] = hashData($userDetails);
+        App::get('database')->addNew("users", $userDetails);
+        echo json_encode('pass hashed!');
+
     }
 }

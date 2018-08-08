@@ -1,27 +1,19 @@
 <?php
 
-$router->get('', 'PagesController@home');
-$router->get('about-us', 'PagesController@aboutUs');
-$router->get('contact', 'PagesController@contact');
-$router->get('products', 'PagesController@products');
+$router->get('app', 'PagesController@home');
 
-$router->post('task/add', 'PagesController@storeTask');
+$router->get('app/users', 'PagesController@listUsers');
+$router->get('app/users/{userId}', 'PagesController@viewUser');
+$router->post('app/users', 'PagesController@addUser');
 
-$router->get('admin/login', "Authenticate@login");
-$router->get('admin/signup', "Authenticate@signup");
-$router->post('admin/createuser', "Authenticate@createuser");
-$router->post('admin/validate', "Authenticate@validate");
-$router->get('admin/logout', "Authenticate@logout", true);
+$router->get('app/pets', 'PagesController@listPets');
+$router->get('app/pets/{petId}', 'PagesController@viewPet');
+$router->post('app/pets', 'PagesController@addPet');
 
+$router->get('app/clients', 'PagesController@listClients');
+$router->get('app/clients', 'PagesController@viewClient');
+$router->post('app/clients', 'PagesController@addClient');
 
-
-$router->get('admin/products', "ProductsController@index", true);
-$router->get('admin/products/create', "ProductsController@create", true);
-$router->post('admin/products', "ProductsController@store", true);
-$router->get('admin/products/show', "ProductsController@show", true);
-$router->get('admin/products/edit', "ProductsController@edit", true);
-$router->post('admin/products/update', "ProductsController@update", true);
-$router->post('admin/products/destroy', "ProductsController@destroy", true);
-
-
-
+$router->get('app/login', "Authenticate@login");
+$router->post('app/login', "Authenticate@validate");
+$router->get('app/logout', "Authenticate@logout");
