@@ -69,4 +69,10 @@ class PagesController
         echo json_encode('pass hashed!');
 
     }
+
+    public function listVisits()
+    {
+        $visits = App::get('database')->getAll("visits");
+        echo json_encode($visits);
+    }
 }

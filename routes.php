@@ -14,6 +14,8 @@ $router->get('app/clients', 'PagesController@listClients');
 $router->get('app/clients/{clientId}', 'PagesController@viewClient');
 $router->post('app/clients', 'PagesController@addClient');
 
+$router->get('app/visits', 'PagesController@listVisits');
+
 $router->get('app/login', "Authenticate@login");
 $router->post('app/login', "Authenticate@validate");
 $router->get('app/logout', "Authenticate@logout");
