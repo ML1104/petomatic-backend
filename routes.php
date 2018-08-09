@@ -11,7 +11,7 @@ $router->get('app/pets/{petId}', 'PagesController@viewPet');
 $router->post('app/pets', 'PagesController@addPet');
 
 $router->get('app/clients', 'PagesController@listClients');
-$router->get('app/clients', 'PagesController@viewClient');
+$router->get('app/clients/{clientId}', 'PagesController@viewClient');
 $router->post('app/clients', 'PagesController@addClient');
 
 $router->get('app/login', "Authenticate@login");
